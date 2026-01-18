@@ -16,7 +16,7 @@ col2 = "Proportion of households"
 # Values with 0 on respective data will be excluded from the clusters and scatter plot
 
 new_df = df[[col1, col2]]
-new_df
+print(new_df)
 
 
 # Elbow method of finding the clusters #
@@ -43,3 +43,4 @@ if num > 0:
     new_df.plot.scatter(col1, col2, c = km_model.labels_, 
                         cmap="rainbow", 
                         colorbar=False)
+    
