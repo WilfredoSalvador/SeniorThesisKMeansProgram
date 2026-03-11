@@ -14,12 +14,19 @@ df = df.replace('nan', np.nan)
 df = df.dropna()
 print(df)
 
-# 2 Features to be utilized
-col1 = "Household Population Under Poverty"
-col2 = "Proportion of Households Under Poverty"
-# Values with 0 on respective data will be excluded from the clusters and scatter plot
+# 4 Features to be utilized
+col1 = "Households Population with No Access to Clean Water"
+col2 = "Proportion of households with no access to clean water"
+col3 = "Household Population Under Poverty"
+col4 = "Proportion of Households Under Poverty"
 
-new_df = df[[col1, col2]]
+# Tell them that the recovery likelihood, has an emphasis on this type of data set, that focuses on length and width, in this case, population and proportion
+# Values with 0 on respective data will be excluded from the clusters and scatter plot
+df['Mean Population of Poverty and Acccess to Clean Water Households'] = (df[col1]+df[col3])/2 
+df['Mean Proportion of Poverty and Access to Clean Water Households'] = (df[col2]+df[col4])/2 
+df
+new_df = df[['Mean Population of Poverty and Acccess to Clean Water Households', 'Mean Proportion of Poverty and Access to Clean Water Households']]
+
 print(new_df)
 
 
@@ -56,9 +63,8 @@ if num > 0:
 
     # labels = {0: "Cluster 1", 1: "Cluster 2", 2: "Cluster 3", 3: "Cluster 4"}
 
-    new_df.plot.scatter(col1, col2, c = km_model.labels_,
+    new_df.plot.scatter('Mean Population of Poverty and Acccess to Clean Water Households', 'Mean Proportion of Poverty and Access to Clean Water Households', c = km_model.labels_,
                          cmap="viridis",
                          colorbar=False)
     plt.show()
-
     

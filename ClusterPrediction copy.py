@@ -13,8 +13,8 @@ df = df.dropna()
 print(df)
 
 # 2 Features to be utilized
-col1 = "Household Population Under Poverty"
-col2 = "Proportion of Households Under Poverty"
+col1 = "Households Population with No Access to Clean Water"
+col2 = "Proportion of households with no access to clean water"
 # Tell them that the recovery likelihood, has an emphasis on this type of data set, that focuses on length and width, in this case, population and proportion
 # Values with 0 on respective data will be excluded from the clusters and scatter plot
 
@@ -22,7 +22,7 @@ new_df = df[[col1, col2]]
 print(new_df)
 
 # K should be selected after doing cluster finding.
-km_model = KMeans(n_clusters=4, n_init="auto")
+km_model = KMeans(n_clusters=6, n_init="auto")
 km_model.fit(new_df)
 
 # pov = ['Household Population Under Poverty', y']
@@ -45,4 +45,4 @@ df_test_result["KPredict"] = km_prediction
 
 print(df_test_result)
 
-df_test_result.to_csv("cluster_predict.csv", index=False)
+df_test_result.to_csv("cluster_predict_water.csv", index=False)

@@ -15,8 +15,8 @@ df = df.dropna()
 print(df)
 
 # 2 Features to be utilized
-col1 = "Household Population Under Poverty"
-col2 = "Proportion of Households Under Poverty"
+col1 = "Households Population with No Access to Clean Water"
+col2 = "Proportion of households with no access to clean water"
 # Values with 0 on respective data will be excluded from the clusters and scatter plot
 
 new_df = df[[col1, col2]]
@@ -60,5 +60,4 @@ if num > 0:
                          cmap="viridis",
                          colorbar=False)
     plt.show()
-
     
